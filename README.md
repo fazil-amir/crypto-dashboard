@@ -1,4 +1,4 @@
-# Multi Bank Crypto Dashboard
+# Crypto Dashboard
 
 
 https://github.com/user-attachments/assets/dd6a0eba-64c1-4ccf-bf78-35df3dc895e5
