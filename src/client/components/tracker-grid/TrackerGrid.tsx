@@ -39,7 +39,7 @@ export function TrackerGrid({ trackers, priceMap }: TrackerGridProps) {
       </div>
       {hasMore && !pricesLoading && (
         <button
-          className="block mt-4 mb-6 py-2.5 px-5 sm:mt-6 sm:mb-10 sm:py-3.5 sm:px-8 bg-surface border-2 border-accent text-accent rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold cursor-pointer hover:bg-accent hover:text-white transition-colors text-left"
+          className="block mt-4 mb-6 py-2 px-5 sm:mt-6 sm:mb-10 sm:px-8 bg-surface border-2 border-accent text-accent rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold cursor-pointer hover:bg-accent hover:text-white transition-colors text-left"
           onClick={() => setExpanded((prev) => !prev)}
         >
           {expanded ? "Show Less" : "Show More"}

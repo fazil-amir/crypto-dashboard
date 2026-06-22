@@ -14,7 +14,7 @@ Production-ready full-stack crypto price dashboard: live spot prices and histori
 | **Resource** | **Value**  |
 |---|---|
 | **Live**  | [**https://crypto-dashboard.fazilamir.me/**](https://crypto-dashboard.fazilamir.me/) |
-| **Image** | `fazilamir/multi-bank-crypto-dashboard:latest` |
+| **Image** | `fazilamir/crypto-dashboard:latest` |
 
 > **Production hosting:** The live app runs on a **self-hosted machine at home** ([Zima OS](https://zimaspace.com/)). It is exposed to the internet via **[Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/)**, so no port forwarding or public IP is required.
 
@@ -45,7 +45,7 @@ Production-ready full-stack crypto price dashboard: live spot prices and histori
 
 ```bash
 git clone <repo-url>
-cd multi-bank-crypto-dashboard
+cd crypto-dashboard
 npm install
 npm run dev
 ```
@@ -60,7 +60,7 @@ npm run dev
 ```bash
 docker run -d -p 4000:4000 -e NODE_ENV=production -e SECURE_COOKIE=false \
   --restart unless-stopped \
-  fazilamir/multi-bank-crypto-dashboard:latest
+  fazilamir/crypto-dashboard:latest
 ```
 
 Then open [http://localhost:4000](http://localhost:4000).
@@ -172,7 +172,7 @@ Serves app + API at [http://localhost:4000](http://localhost:4000).
 docker compose up -d
 ```
 
-Uses image `fazilamir/multi-bank-crypto-dashboard:latest`, port `4000`, `NODE_ENV=production`, `SECURE_COOKIE=false`.
+Uses image `fazilamir/crypto-dashboard:latest`, port `4000`, `NODE_ENV=production`, `SECURE_COOKIE=false`.
 
 ---
 
@@ -198,13 +198,13 @@ Environment variables (see [.env.example](.env.example)):
 
 1. **Pull and run:**
    ```bash
-   docker pull fazilamir/multi-bank-crypto-dashboard:latest
-   docker run -d --name multi-bank-crypto-dashboard \
+   docker pull fazilamir/crypto-dashboard:latest
+   docker run -d --name crypto-dashboard \
      -p 4000:4000 \
      -e NODE_ENV=production \
      -e SECURE_COOKIE=false \
      --restart unless-stopped \
-     fazilamir/multi-bank-crypto-dashboard:latest
+     fazilamir/crypto-dashboard:latest
    ```
 2. **Or use Compose:** `docker compose up -d` (see [docker-compose.yml](docker-compose.yml)).
 
@@ -244,7 +244,7 @@ All authenticated routes require the auth cookie (same site or CORS with `creden
 ## Project structure
 
 ```
-multi-bank-crypto-dashboard/
+crypto-dashboard/
 ├── index.html
 ├── package.json
 ├── vite.config.ts
@@ -366,7 +366,7 @@ Planned or possible improvements:
 |-------|-----|
 | **401 Unauthorized** on APIs after login | Using HTTP? Set `SECURE_COOKIE=false` so the auth cookie is sent. Rebuild/redeploy so the server uses it. |
 | **No matching manifest for linux/amd64** | Image was built on arm64 only. Use `npm run docker:push` to build and push multi-platform image. |
-| **Push access denied** to Docker Hub | Run `docker login`. Tag image as `yourusername/repo:tag` (e.g. `fazilamir/multi-bank-crypto-dashboard:latest`) before push. |
+| **Push access denied** to Docker Hub | Run `docker login`. Tag image as `yourusername/repo:tag` (e.g. `fazilamir/crypto-dashboard:latest`) before push. |
 | **Blank page at localhost:4000** | Ensure `dist/` exists (`npm run build`) and server serves it; or run in Docker so the image includes the built frontend. |
 | **SSE / prices not updating** | Check server logs; ensure Binance WebSocket is connected and `/api/trackers/streams` is reachable with auth cookie. |
 

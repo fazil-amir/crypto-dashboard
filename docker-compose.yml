@@ -1,7 +1,7 @@
 services:
   app:
-    image: fazilamir/multi-bank-crypto-dashboard:latest
-    container_name: multi-bank-crypto-dashboard
+    image: fazilamir/crypto-dashboard:latest
+    container_name: crypto-dashboard
     ports:
       - "4000:4000"
     environment:
